@@ -5,21 +5,15 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      httpserver:
+        image: nginx:stable-alpine3.19-slim
+        ports:
+          - 8080:80    
     steps:
       - name: run-test
         id: run-test
         run: |
           sudo apt install -y curl
-          docker run -d -p 9090:80 --name httpserver nginx:stable-alpine3.19-slim
-          docker ps
-          docker inspect httpserver          
-          echo ""
-          echo "####################"
-          echo ""
-          ip_server=`docker inspect httpserver | jq -r .[].NetworkSettings.IPAddress`
-          echo "IP: $ip_server"
-          echo ""
-          echo "####################"
-          echo ""
-          curl -v http://${ip_server}:9090
+          curl -v http://localhost:8080
         
