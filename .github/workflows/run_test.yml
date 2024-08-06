@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: run-test
         id: run-test
-        run:
+        run: |
           apt install curl
           docker run -p 8080:80 nginx:stable-alpine3.19-slim
           curl -v http://127.0.0.1:8080
