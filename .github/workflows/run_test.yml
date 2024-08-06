@@ -9,6 +9,8 @@ jobs:
         id: run-test
         run: |
           sudo apt install -y curl
-          docker run -d -p 8080:80 nginx:stable-alpine3.19-slim
+          docker run -d -p 8080:80 --name httpserver nginx:stable-alpine3.19-slim
+          docker ps
+          docker inspect httpserver          
           curl -v http://127.0.0.1:8080
         
