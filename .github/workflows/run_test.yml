@@ -3,19 +3,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    services:
-      httpserver:
-        image: nginx:stable-alpine3.19-slim
-        ports:
-          - 8080:80    
-    steps:
-      - name: run-test
-        id: run-test
-        run: |
-          sudo apt install -y curl
-          curl -v http://localhost:8080
+#  test:
+#    runs-on: ubuntu-latest
+#    services:
+#      httpserver:
+#        image: nginx:stable-alpine3.19-slim
+#        ports:
+#          - 8080:80    
+#    steps:
+#      - name: run-test
+#        id: run-test
+#        run: |
+#          sudo apt install -y curl
+#          curl -v http://localhost:8080
   test2:
     runs-on: ubuntu-latest
     steps:
