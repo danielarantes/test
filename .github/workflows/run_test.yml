@@ -1,3 +1,4 @@
+name: test
 on:
   workflow_dispatch:
 
@@ -9,16 +10,16 @@ jobs:
         id: run-test
         run: |
           sudo apt install -y curl
-          docker run -d -p 80:80 --name httpserver nginx:stable-alpine3.19-slim
-          ip_server=`docker inspect httpserver | jq -r .[].NetworkSettings.IPAddress`
-          echo "IP: $ip_server"
-          echo ""
-          echo "####################"
-          echo ""
+          docker run -d -p 9090:80 --name httpserver nginx:stable-alpine3.19-slim
           docker ps
           docker inspect httpserver          
           echo ""
           echo "####################"
           echo ""
-          curl -v http://${ip_server}:80
+          ip_server=`docker inspect httpserver | jq -r .[].NetworkSettings.IPAddress`
+          echo "IP: $ip_server"
+          echo ""
+          echo "####################"
+          echo ""
+          curl -v http://${ip_server}:9090
         
