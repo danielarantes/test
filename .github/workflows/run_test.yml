@@ -16,4 +16,14 @@ jobs:
         run: |
           sudo apt install -y curl
           curl -v http://localhost:8080
+  test2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run-test2
+        id: run-test2
+        run: |
+          docker run -d -p 8080:80 nginx:stable-alpine3.19-slim
+          sudo apt install -y curl
+          curl -v http://localhost:8080
+
         
