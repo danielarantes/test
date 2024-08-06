@@ -2,11 +2,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - name: run-test
-      id: run-test
-      run:
-        docker run -p 8080:80 nginx:stable-alpine3.19-slim
-        curl -v http://127.0.0.1:8080
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run-test
+        id: run-test
+        run:
+          docker run -p 8080:80 nginx:stable-alpine3.19-slim
+          curl -v http://127.0.0.1:8080
         
