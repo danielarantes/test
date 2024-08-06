@@ -20,5 +20,5 @@ jobs:
           echo ""
           echo "####################"
           echo ""
-          curl -v http://127.0.0.1:80
+          curl -v http://${ip_server}:80
         
